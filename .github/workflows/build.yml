@@ -5,7 +5,7 @@ on: [push, pull_request]
 jobs:
   Ubuntu:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     env:
       MRUBY_CONFIG: ci/gcc-clang
       TERM: xterm
@@ -32,12 +32,16 @@ jobs:
 
   macOS:
     runs-on: macos-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     env:
       MRUBY_CONFIG: ci/gcc-clang
       CC: clang
     steps:
       - uses: actions/checkout@v4
+      - name: install gtk
+        run: |
+          brew update
+          brew install gtk+3 gtk-mac-integration
       - name: Ruby version
         run: ruby -v
       - name: Compiler version
@@ -79,6 +83,7 @@ jobs:
             libiconv-devel
             make
             ruby
+            mingw-w64-x86_64-pdcurses
       - name: Ruby version
         run: ruby -v
       - name: Compiler version
