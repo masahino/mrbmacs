@@ -81,6 +81,7 @@ jobs:
             gcc
             git
             libiconv-devel
+            libtool
             make
             ruby
             mingw-w64-x86_64-pdcurses
