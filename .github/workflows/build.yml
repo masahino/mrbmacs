@@ -83,8 +83,10 @@ jobs:
             libiconv-devel
             libtool
             make
+            pkgconf
             ruby
             mingw-w64-x86_64-pdcurses
+            mingw-w64-x86_64-unibilium
       - name: Ruby version
         run: ruby -v
       - name: Compiler version
