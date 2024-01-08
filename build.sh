@@ -9,7 +9,7 @@ if [ -z "${MRUBY_CONFIG}" ] ; then
   export MRUBY_CONFIG=`pwd`/.github_actions_build_config.rb
 fi
 if [ -z "${MRUBY_VERSION}" ] ; then
-  export MRUBY_VERSION="3.2.0"
+  export MRUBY_VERSION="3.3.0-rc2"
 fi
 
 if [ ! -d "./mruby/src" ]; then
