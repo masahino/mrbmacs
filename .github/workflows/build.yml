@@ -36,8 +36,12 @@ jobs:
           path: mruby/build/mrbmacs-gtk/bin/mrbmacs-gtk
       - name: Setup faketty
         uses: Yuri6037/Action-FakeTTY@v1.1
-      - name: Test
-        run: xvfb-run ./build.sh test
+      - name: Test curses
+        run: faketty ./build.sh curses test
+      - name: Test termbox
+        run: faketty ./build.sh termbox test
+      - name: Test GTK
+        run: xvfb-run ./build.sh gtk test
 
   macOS:
     runs-on: macos-latest
