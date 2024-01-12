@@ -133,4 +133,4 @@ jobs:
       - name: Compiler version
         run: ${{ env.CC }} --version
       - name: Build and test
-        run: ./build.sh curses
+        run: PKG_CONFIG_PATH="" ./build.sh curses test
