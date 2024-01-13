@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: install gtk
-        run: sudo apt-get install -y libgtk-3-dev libtool-bin libncurses5-dev libncursesw5-dev
+        run: sudo apt-get install -y libgtk-3-dev libtool-bin libncurses5-dev libncursesw5-dev xvfb
       - name: Ruby version
         run: ruby -v
       - name: Compiler version
@@ -36,8 +36,12 @@ jobs:
           path: mruby/build/mrbmacs-gtk/bin/mrbmacs-gtk
       - name: Setup faketty
         uses: Yuri6037/Action-FakeTTY@v1.1
-      - name: Test
-        run: faketty ./build.sh test
+      - name: Test curses
+        run: faketty ./build.sh curses test
+      - name: Test termbox
+        run: faketty ./build.sh termbox test
+      - name: Test GTK
+        run: xvfb-run ./build.sh gtk test
 
   macOS:
     runs-on: macos-latest
@@ -94,7 +98,7 @@ jobs:
         run: ruby -v
       - name: Compiler version
         run: ${{ env.CC }} --version
-      - name: Build and test
+      - name: Build
         run: ./build.sh termbox
 
   mingw-curses:
@@ -128,5 +132,5 @@ jobs:
         run: ruby -v
       - name: Compiler version
         run: ${{ env.CC }} --version
-      - name: Build and test
-        run: ./build.sh curses
+      - name: Build
+        run: PKG_CONFIG_PATH="" ./build.sh curses
