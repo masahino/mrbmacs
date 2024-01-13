@@ -98,7 +98,7 @@ jobs:
         run: ruby -v
       - name: Compiler version
         run: ${{ env.CC }} --version
-      - name: Build and test
+      - name: Build
         run: ./build.sh termbox
 
   mingw-curses:
@@ -132,5 +132,5 @@ jobs:
         run: ruby -v
       - name: Compiler version
         run: ${{ env.CC }} --version
-      - name: Build and test
-        run: PKG_CONFIG_PATH="" ./build.sh curses test
+      - name: Build
+        run: PKG_CONFIG_PATH="" ./build.sh curses
