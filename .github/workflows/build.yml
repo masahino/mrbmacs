@@ -10,7 +10,7 @@ jobs:
       TERM: xterm
       CC: gcc
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: install gtk
         run: sudo apt-get install -y libgtk-3-dev libtool-bin libncurses5-dev libncursesw5-dev xvfb
       - name: Ruby version
@@ -49,7 +49,7 @@ jobs:
     env:
       CC: gcc
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: install gtk
         run: |
           brew update
@@ -79,7 +79,7 @@ jobs:
       run:
         shell: msys2 {0}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: setup msys2
         uses: msys2/setup-msys2@v2
         with:
@@ -110,7 +110,7 @@ jobs:
       run:
         shell: msys2 {0}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: mingw setup
         uses: msys2/setup-msys2@v2
         with:
