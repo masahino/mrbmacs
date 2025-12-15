@@ -20,17 +20,17 @@ jobs:
       - name: Build
         run: ./build.sh
       - name: upload mrbmacs-termbox
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: mrbmacs-termbox
           path: mruby/build/mrbmacs-termbox/bin/mrbmacs-termbox
       - name: upload mrbmacs-curses
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: mrbmacs-curses
           path: mruby/build/mrbmacs-curses/bin/mrbmacs-curses
       - name: upload mrbmacs-gtk
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: mrbmacs-gtk
           path: mruby/build/mrbmacs-gtk/bin/mrbmacs-gtk
@@ -61,7 +61,7 @@ jobs:
       - name: Build
         run: ./build.sh
       - name: upload
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v6
         with:
           name: mrbmacs-termbox
           path: mruby/bin/mrbmacs-termbox
