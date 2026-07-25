@@ -24,3 +24,7 @@ $ git clone https://github.com/masahino/mrbmacs
 $ cd mrbmacs
 $ ./build.sh
 ```
+
+## Documentation
+
+- [Version control](docs/version-control.md)
