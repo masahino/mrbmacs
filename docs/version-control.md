@@ -5,12 +5,14 @@ currently supported.
 
 ## Gutter indicators
 
-The version-control gutter appears between the folding margin and the text
-area:
+The version-control gutter appears between the folding and change-history
+margins:
 
 ```text
-[Line numbers and debugger] [Folding] [VC] [Text]
+[Line numbers and debugger] [Folding] [VC] [Change history] [Text]
 ```
+
+See [Editor margins](margins.md) for the responsibilities of all four margins.
 
 | Indicator | Meaning |
 | --- | --- |

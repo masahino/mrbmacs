@@ -12,5 +12,5 @@ MRuby::Build.new('mrbmacs-termbox') do |conf|
 
   gem_config(conf)
 
-  conf.gem github: 'masahino/mruby-bin-mrbmacs-termbox', branch: 'main'
+  conf.gem github: 'masahino/mruby-bin-mrbmacs-termbox'
 end
