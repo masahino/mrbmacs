@@ -57,7 +57,7 @@ jobs:
       - name: install gtk
         run: |
           brew update
-          brew install gtk+3 gtk-mac-integration
+          brew install gtk+3 gtk-mac-integration libtool
       - name: Ruby version
         run: ruby -v
       - name: Compiler version
