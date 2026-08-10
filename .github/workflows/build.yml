@@ -41,7 +41,7 @@ jobs:
       - name: Setup faketty
         uses: Yuri6037/Action-FakeTTY@v1.1
       - name: Test curses
-        run: faketty ./build.sh curses test
+        run: script -qec './build.sh curses test' /dev/null
       - name: Test termbox
         run: faketty ./build.sh termbox test
       - name: Test GTK
