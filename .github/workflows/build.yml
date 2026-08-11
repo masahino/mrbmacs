@@ -45,7 +45,7 @@ jobs:
       - name: Debug curses split
         run: |
           gdb --batch \
-            -ex run \
+            -ex "run < /dev/null > /tmp/mrbmacs.out 2> /tmp/mrbmacs.err" \
             -ex "thread apply all bt" \
             --args \
             mruby/build/mrbmacs-curses/bin/mrbmacs-curses \
