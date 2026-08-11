@@ -49,6 +49,7 @@ See [Building mrbmacs](docs/building.md) for details. Cocoa requires macOS.
 
 ## Documentation
 
+- [Language support](docs/language-support.md)
 - [Startup configuration](docs/configuration.md)
 - [Editor margins](docs/margins.md)
 - [Language Server Protocol (LSP)](docs/lsp.md)
