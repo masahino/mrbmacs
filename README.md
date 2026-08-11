@@ -27,6 +27,9 @@ instructions. Common features and startup configuration are documented here.
 ### GTK
 <img src="images/screenshot_gtk.png" width="30%" alt="GTK" />
 
+### Cocoa
+<img src="images/screenshot_cocoa.png" width="30%" alt="Cocoa" />
+
 ## Getting started
 
 The default build includes Termbox, Curses, and GTK. Running the build without
