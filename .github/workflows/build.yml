@@ -1,6 +1,10 @@
 name: Build & Test
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
 
 jobs:
   Ubuntu:
@@ -11,8 +15,10 @@ jobs:
       CC: gcc
     steps:
       - uses: actions/checkout@v7
-      - name: install gtk
-        run: sudo apt-get install -y libgtk-3-dev libtool-bin libncurses5-dev libncursesw5-dev xvfb
+      - name: install packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgtk-3-dev libtool-bin libncurses5-dev libncursesw5-dev xvfb
       - name: Ruby version
         run: ruby -v
       - name: Compiler version
@@ -53,7 +59,7 @@ jobs:
       - name: install gtk
         run: |
           brew update
-          brew install gtk+3 gtk-mac-integration
+          brew install gtk+3 gtk-mac-integration libtool
       - name: Ruby version
         run: ruby -v
       - name: Compiler version
@@ -70,67 +76,14 @@ jobs:
       - name: Test
         run: faketty ./build.sh test
 
-  msys2-termbox:
-    runs-on: windows-latest
+  Cocoa:
+    runs-on: macos-latest
     timeout-minutes: 20
-    env:
-      CC: gcc
-    defaults:
-      run:
-        shell: msys2 {0}
     steps:
       - uses: actions/checkout@v7
-      - name: setup msys2
-        uses: msys2/setup-msys2@v2
-        with:
-          update: true
-          install: >-
-            gcc
-            git
-            libiconv-devel
-            libtool
-            make
-            pkgconf
-            ruby
-            mingw-w64-x86_64-pdcurses
-            mingw-w64-x86_64-unibilium
       - name: Ruby version
         run: ruby -v
       - name: Compiler version
-        run: ${{ env.CC }} --version
-      - name: Build
-        run: ./build.sh termbox
-
-  mingw-curses:
-    runs-on: windows-latest
-    timeout-minutes: 20
-    env:
-      CC: gcc
-    defaults:
-      run:
-        shell: msys2 {0}
-    steps:
-      - uses: actions/checkout@v7
-      - name: mingw setup
-        uses: msys2/setup-msys2@v2
-        with:
-          msystem: MINGW64
-          update: true
-          install: >-
-            mingw-w64-x86_64-gcc
-            mingw-w64-x86_64-ruby
-            mingw-w64-x86_64-pdcurses
-            mingw-w64-x86_64-unibilium
-            mingw-w64-x86_64-libiconv
-            mingw-w64-x86_64-libtool
-            mingw-w64-x86_64-pkg-config
-            git
-            make
-            patch
-            libtool
-      - name: Ruby version
-        run: ruby -v
-      - name: Compiler version
-        run: ${{ env.CC }} --version
-      - name: Build
-        run: PKG_CONFIG_PATH="" ./build.sh curses
+        run: clang --version
+      - name: Build and test Cocoa
+        run: ./build.sh cocoa test

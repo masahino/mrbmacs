@@ -1,0 +1,103 @@
+# Startup configuration
+
+mrbmacs loads `~/.mrbmacsrc` at startup. The file is evaluated as Ruby in the
+application instance, so application state such as `@config` and `@frame` is
+available directly.
+
+Use `-q` to start without loading `~/.mrbmacsrc`:
+
+```sh
+mrbmacs-termbox -q
+```
+
+Use `-l FILE` to load another Ruby file after normal startup initialization:
+
+```sh
+mrbmacs-termbox -l project.rb
+```
+
+Errors raised while loading a configuration file are written to the mrbmacs
+log in the system temporary directory.
+
+## Example
+
+```ruby
+# Theme classes must be included in the build.
+@config.theme = Mrbmacs::SolarizedDarkTheme
+
+# Try these encodings, in order, when a file is not valid UTF-8.
+@config.file_encodings = ['Windows-31J', 'EUC-JP']
+
+# Extension configuration is grouped by extension name.
+@config.ext['lsp'] = {
+  'ruby' => {
+    'command' => 'solargraph',
+    'options' => { 'args' => ['stdio'] }
+  }
+}
+
+@config.ext['dap'] = {
+  'ruby' => {
+    command: 'rdbg',
+    args: ['-O', '--sock-path=/tmp/mrbmacs-rdbg'],
+    type: 'rdbg',
+    langs: ['ruby'],
+    sock_path: '/tmp/mrbmacs-rdbg',
+    require_target: true
+  }
+}
+
+# Font handling is frontend-specific. Cocoa and GTK provide set_font.
+@frame.set_font('Menlo', 14) if @frame.respond_to?(:set_font)
+```
+
+See [LSP](lsp.md) and [DAP](dap.md) for extension-specific settings.
+
+## Themes
+
+Set the startup theme to a theme class:
+
+```ruby
+@config.theme = Mrbmacs::Base16DefaultLightTheme
+```
+
+The base package includes default Base16 and Solarized themes. Additional
+theme classes are available when `mruby-mrbmacs-themes-base16` or
+`mruby-mrbmacs-themes-tomorrow` is included in the build.
+
+At runtime, use `M-x select-theme` to select an included theme by name.
+
+## Fonts
+
+Fonts are not currently part of `Mrbmacs::Config`. Graphical frontends can
+provide `@frame.set_font(NAME, SIZE)` and `M-x select-font`. Terminal frontends
+use the font selected by the terminal emulator. Guard a portable startup file
+with `respond_to?` as shown above.
+
+## Core configuration fields
+
+| Field | Default | Purpose |
+| --- | --- | --- |
+| `@config.theme` | `Mrbmacs::Base16DefaultDarkTheme` | Theme class used at startup |
+| `@config.ext` | `{}` | Settings consumed by optional extensions |
+| `@config.file_encodings` | `[]` | Fallback encodings tried when reading files |
+| `@config.use_builtin_completion` | `false` | Enable built-in completion handling |
+| `@config.use_builtin_indent` | `false` | Select built-in indentation where supported |
+| `@config.use_builtin_syntax_check` | `false` | Run built-in syntax checking on file operations |
+
+An extension may adjust a core option while registering itself. For example,
+the LSP extension disables built-in completion so LSP completion can handle
+the same events.
+
+## Loading order
+
+The main startup order relevant to configuration is:
+
+1. create the initial buffer and frontend frame;
+2. load `~/.mrbmacsrc`, unless `-q` was specified;
+3. create and apply `@config.theme`;
+4. register optional extensions, which consume `@config.ext`;
+5. load the file passed with `-l`, if any.
+
+This is why theme, LSP, and DAP startup settings belong in `@config`: they are
+read after `.mrbmacsrc` has been evaluated.
