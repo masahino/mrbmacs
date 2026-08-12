@@ -4,15 +4,15 @@ mrbmacs uses Scintilla margins to keep independent indicators from obscuring
 one another. From left to right, the shared layout is:
 
 ```text
-[Line numbers and debugger] [Folding] [Version control] [Change history] [Text]
+[Line numbers and debugger] [Version control] [Change history] [Folding] [Text]
 ```
 
 | Margin | Purpose |
 | ---: | --- |
 | 0 | Line numbers, DAP breakpoints, and the current debugger position |
-| 1 | Code-folding controls |
-| 2 | Version-control indicators |
-| 3 | Scintilla change-history indicators |
+| 1 | Version-control indicators |
+| 2 | Scintilla change-history indicators |
+| 3 | Code-folding controls |
 
 Widths are derived from the current font where the frontend supports pixel
 measurements. Terminal frontends may represent margins with character-cell
