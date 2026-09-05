@@ -71,7 +71,7 @@ The DAP buffer presents a reduced view of adapter activity:
 | --- | --- |
 | `[Process]` | A debuggee process was launched or attached |
 | `[Stopped]` | Execution stopped and the top stack frame was selected |
-| `[Breakponit]` | The adapter reported a breakpoint change |
+| `[Breakpoint]` | The adapter reported a breakpoint change |
 | `[Output] stdout` / `[Output] stderr` | Output from the debuggee |
 | `[Output] console` | Console information from the adapter |
 | `[Exited]` | The debuggee reported an exit code |

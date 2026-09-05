@@ -50,10 +50,12 @@ See [Building mrbmacs](docs/building.md) for details. Cocoa requires macOS.
 ## Documentation
 
 - [Key bindings](docs/key-bindings.md)
+- [Project operations](docs/project.md)
 - [Language support](docs/language-support.md)
 - [Startup configuration](docs/configuration.md)
 - [Editor margins](docs/margins.md)
 - [Language Server Protocol (LSP)](docs/lsp.md)
 - [Debug Adapter Protocol (DAP)](docs/dap.md)
+- [AI Chat and agent tools](docs/aichat.md)
 - [Version control](docs/version-control.md)
 - [Building mrbmacs](docs/building.md)

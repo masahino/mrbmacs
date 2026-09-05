@@ -5,11 +5,11 @@ currently supported.
 
 ## Gutter indicators
 
-The version-control gutter appears between the folding and change-history
+The version-control gutter appears between the line-number and change-history
 margins:
 
 ```text
-[Line numbers and debugger] [Folding] [VC] [Change history] [Text]
+[Line numbers and debugger] [VC] [Change history] [Folding] [Text]
 ```
 
 See [Editor margins](margins.md) for the responsibilities of all four margins.
@@ -34,12 +34,6 @@ The gutter is refreshed automatically:
 
 - after opening a file;
 - after saving a file.
-
-To refresh it manually:
-
-```text
-M-x vc-refresh-gutter
-```
 
 ## Viewing a diff
 
@@ -67,5 +61,5 @@ A detached `HEAD` is displayed using its abbreviated revision.
 - Untracked files do not currently produce gutter indicators.
 - The gutter is based on `HEAD`; separate staged and unstaged states are not
   distinguished.
-- External file modifications require a manual refresh until the file is
-  reopened or saved.
+- External file modifications are reflected after the file is reopened or
+  saved.

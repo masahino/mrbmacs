@@ -84,10 +84,34 @@ with `respond_to?` as shown above.
 | `@config.use_builtin_completion` | `false` | Enable built-in completion handling |
 | `@config.use_builtin_indent` | `false` | Select built-in indentation where supported |
 | `@config.use_builtin_syntax_check` | `false` | Run built-in syntax checking on file operations |
+| `@config.styles` | `Mrbmacs::StyleOverrides.new` | User overrides for syntax and Scintilla styles |
 
 An extension may adjust a core option while registering itself. For example,
 the LSP extension disables built-in completion so LSP completion can handle
 the same events.
+
+## Style overrides
+
+Override a semantic style globally or for one lexer through `@config.styles`:
+
+```ruby
+@config.styles.override(:comment, italic: false)
+@config.styles.override(:string, lexer: :ruby, foreground: :base0C)
+```
+
+An exact Scintilla style can also be overridden when necessary:
+
+```ruby
+@config.styles.override_scintilla(
+  :ruby,
+  Scintilla::SCE_RB_SYMBOL,
+  bold: true
+)
+```
+
+See the
+[`mruby-mrbmacs-base` style-system design](https://github.com/masahino/mruby-mrbmacs-base/blob/master/docs/style-system-design.md)
+for the resolution order and available override levels.
 
 ## Loading order
 
