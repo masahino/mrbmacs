@@ -3,9 +3,9 @@
 AI Chat support is provided by the optional
 [`mruby-mrbmacs-aichat`](https://github.com/masahino/mruby-mrbmacs-aichat)
 extension. It uses OpenAI's Responses API through an external `curl` process.
-It is not included in the integration repository's default builds.
+It is included in the integration repository's default frontend builds.
 
-To include AI Chat in a custom build, add the gem to the build configuration:
+For a separate custom build, add the gem to its build configuration:
 
 ```ruby
 conf.gem github: 'masahino/mruby-mrbmacs-aichat'

@@ -25,6 +25,8 @@ def gem_config(conf)
     g.skip_test = true
   end
   conf.gem github: 'masahino/mruby-mrbmacs-dap'
+  conf.gem github: 'masahino/mruby-mrbmacs-aichat'
+  conf.gem github: 'masahino/mruby-mrbmacs-agent'
 
   # additional themes
   conf.gem github: 'masahino/mruby-mrbmacs-themes-base16'

@@ -31,11 +31,22 @@ See [Startup configuration](configuration.md) for runtime settings.
 `build_config/common.rb` contains mrbgems shared by the frontend builds. The
 frontend files add the relevant executable and Scintilla backend.
 
-The common configuration includes the Base16 and Tomorrow theme packages:
+The common configuration includes:
+
+- the mrbmacs LSP extension and LSP client;
+- the mrbmacs DAP extension;
+- AI Chat and agent tools;
+- the Base16 and Tomorrow theme packages;
+- debug support used by the development builds.
+
+The corresponding declarations are maintained in `build_config/common.rb`.
+For example, the optional editor extensions are included with:
 
 ```ruby
-conf.gem github: 'masahino/mruby-mrbmacs-themes-base16'
-conf.gem github: 'masahino/mruby-mrbmacs-themes-tomorrow'
+conf.gem github: 'masahino/mruby-mrbmacs-lsp'
+conf.gem github: 'masahino/mruby-mrbmacs-dap'
+conf.gem github: 'masahino/mruby-mrbmacs-aichat'
+conf.gem github: 'masahino/mruby-mrbmacs-agent'
 ```
 
 ## Dependency lock files
