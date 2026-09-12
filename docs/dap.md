@@ -84,7 +84,8 @@ and process ID.
 
 ## Configuration
 
-Configure adapters in `~/.mrbmacsrc` through `@config.ext['dap']`. DAP adapter
+Configure adapters in `~/.config/mrbmacs/init.rb` through
+`@config.ext['dap']`. DAP adapter
 fields use symbol keys:
 
 ```ruby

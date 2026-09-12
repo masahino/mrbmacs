@@ -27,7 +27,7 @@ such as LSP.
 | POV-Ray | `.pov` | Supported | |
 | Python | `.py` | Supported | |
 | R | `.r` | Supported | |
-| Ruby | `.rb`, `.rake`, `Rakefile`, `.mrbmacsrc` | Supported | |
+| Ruby | `.rb`, `.rake`, `Rakefile`, `init.rb`, `.mrbmacs`, `.mrbmacsrc` | Supported | Includes current and legacy mrbmacs startup filenames. |
 | Rust | `.rs` | Supported | |
 | TypeScript | `.ts` | Supported | TSX is not detected yet. |
 | XML | `.xml`, `.plist` | Supported | |

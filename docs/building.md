@@ -19,7 +19,8 @@ cd mrbmacs
 
 These settings serve different purposes:
 
-- `~/.mrbmacsrc` configures editor behavior each time mrbmacs starts;
+- `~/.config/mrbmacs/init.rb` configures editor behavior each time mrbmacs
+  starts (`$XDG_CONFIG_HOME/mrbmacs/init.rb` when `XDG_CONFIG_HOME` is set);
 - `build_config/*.rb` selects the frontend, mrbgems, compiler settings, and
   features compiled into the executable.
 

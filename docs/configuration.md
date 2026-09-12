@@ -1,10 +1,35 @@
 # Startup configuration
 
-mrbmacs loads `~/.mrbmacsrc` at startup. The file is evaluated as Ruby in the
-application instance, so application state such as `@config` and `@frame` is
-available directly.
+mrbmacs uses the XDG Base Directory convention for its startup file. The
+standard location is:
 
-Use `-q` to start without loading `~/.mrbmacsrc`:
+```text
+~/.config/mrbmacs/init.rb
+```
+
+When `XDG_CONFIG_HOME` is set, mrbmacs first looks for:
+
+```text
+$XDG_CONFIG_HOME/mrbmacs/init.rb
+```
+
+The startup file is evaluated as Ruby in the application instance, so
+application state such as `@config` and `@frame` is available directly.
+
+For compatibility, `~/.mrbmacs` and `~/.mrbmacsrc` are also recognized. New
+configurations should use the XDG location. mrbmacs loads only the first
+existing regular file in this order:
+
+1. `$XDG_CONFIG_HOME/mrbmacs/init.rb`, when `XDG_CONFIG_HOME` is set;
+2. `~/.config/mrbmacs/init.rb`;
+3. `~/.mrbmacs`;
+4. `~/.mrbmacsrc`.
+
+When `XDG_CONFIG_HOME` is unset or empty, the first two locations are the same
+and are checked only once. A relative `XDG_CONFIG_HOME` is invalid under the
+XDG Base Directory specification and is treated as unset.
+
+Use `-q` to start without loading any startup file:
 
 ```sh
 mrbmacs-termbox -q
@@ -118,10 +143,10 @@ for the resolution order and available override levels.
 The main startup order relevant to configuration is:
 
 1. create the initial buffer and frontend frame;
-2. load `~/.mrbmacsrc`, unless `-q` was specified;
+2. load the highest-priority startup file, unless `-q` was specified;
 3. create and apply `@config.theme`;
 4. register optional extensions, which consume `@config.ext`;
 5. load the file passed with `-l`, if any.
 
 This is why theme, LSP, and DAP startup settings belong in `@config`: they are
-read after `.mrbmacsrc` has been evaluated.
+read after the startup file has been evaluated.

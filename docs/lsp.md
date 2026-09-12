@@ -5,7 +5,7 @@ LSP support is provided by the optional
 extension. The integration builds include it by default, but a language server
 must also be installed and available on `PATH`.
 
-Configure servers in `~/.mrbmacsrc` through `@config.ext['lsp']`:
+Configure servers in `~/.config/mrbmacs/init.rb` through `@config.ext['lsp']`:
 
 ```ruby
 @config.ext['lsp'] = {
@@ -71,6 +71,6 @@ the command is executed. Disabled actions are not executed.
 Workspace edits using `changes` are supported. Workspace edits using
 `documentChanges` are not currently supported.
 
-Use `@config.ext`, not `@ext.config`, in `.mrbmacsrc`. `@ext.config` is the
-extension's resolved internal state and is populated later during extension
-registration.
+Use `@config.ext`, not `@ext.config`, in the startup file. `@ext.config` is
+the extension's resolved internal state and is populated later during
+extension registration.

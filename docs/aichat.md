@@ -18,7 +18,7 @@ environment before starting mrbmacs:
 export OPENAI_API_KEY='...'
 ```
 
-The environment can also be configured from `~/.mrbmacsrc`, but API keys must
+The environment can also be configured from `~/.config/mrbmacs/init.rb`, but API keys must
 not be committed to a repository or placed in a shared configuration file.
 The optional initial model is configured with `MRBMACS_AICHAT_MODEL`:
 
